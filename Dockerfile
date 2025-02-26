@@ -1,4 +1,4 @@
-FROM maven:3.8.4-openjdk-17 AS builder
+FROM eclipse-temurin:21-jdk-alpine AS builder
 WORKDIR /app
 
 COPY pom.xml .
