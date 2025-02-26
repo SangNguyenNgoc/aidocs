@@ -1,0 +1,17 @@
+spring:
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o-mini
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimension: 1536
+  datasource:
+    url: jdbc:postgresql://143.198.80.174:5432/sbdocs
+    username: admin
+    password: password
+
