@@ -1,5 +1,5 @@
 # Dùng GraalVM với Maven để build
-FROM ghcr.io/graalvm/graalvm-ce:21 AS builder
+FROM maven:3.8.4-openjdk-17 AS builder
 WORKDIR /app
 
 # Copy mã nguồn và cấu hình Maven
