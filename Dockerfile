@@ -6,7 +6,7 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-FROM ghcr.io/graalvm/graalvm-ce:21 AS runner
+FROM ghcr.io/graalvm/jdk:21 AS runner
 WORKDIR /app
 
 COPY --from=builder /app/target/*.jar app.jar
