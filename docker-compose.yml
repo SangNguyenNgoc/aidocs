@@ -44,3 +44,11 @@ services:
       - "5050:5050"
     networks:
       - postgres_vector
+
+networks:
+  postgres_vector:
+    driver: bridge
+
+volumes:
+  pgvector:
+  pgadmin:
