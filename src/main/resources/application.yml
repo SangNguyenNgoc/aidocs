@@ -4,14 +4,14 @@ spring:
       api-key: ${OPENAI_API_KEY}
       chat:
         options:
-          model: gpt-4o-mini
+          model: ${OPENAI_API_MODEL}
     vectorstore:
       pgvector:
         index-type: HNSW
         distance-type: COSINE_DISTANCE
         dimension: 1536
   datasource:
-    url: jdbc:postgresql://143.198.80.174:5432/sbdocs
-    username: admin
-    password: password
+    url: jdbc:postgresql://${POSTGRES_HOST}:5432/sbdocs
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
 

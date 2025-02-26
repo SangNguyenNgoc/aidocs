@@ -1,0 +1,46 @@
+version: '3.5'
+
+services:
+  app:
+    build: .
+    environment:
+      TAG: ai-docs-app
+      TZ: Asia/Ho_Chi_Minh
+    container_name: ai-docs-app
+    restart: on-failure
+    ports:
+      - "9000:9000"
+    env_file:
+      - .env
+    networks:
+      - postgres_vector
+
+  pgvector:
+    container_name: pgvector
+    image: ankane/pgvector
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      PGDATA: /data/postgres
+    volumes:
+      - pgvector:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres_vector
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+    ports:
+      - "5050:5050"
+    networks:
+      - postgres_vector
