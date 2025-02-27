@@ -1,4 +1,4 @@
-package org.sangnguyen.aidocs;
+package org.sangnguyen.aidocs.services;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;

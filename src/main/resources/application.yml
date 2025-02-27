@@ -15,3 +15,6 @@ spring:
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
 
+key:
+  api-key-header: ${API_KEY_HEADER}
+  api-key: ${API_KEY}

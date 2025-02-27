@@ -1,4 +1,4 @@
-package org.sangnguyen.aidocs;
+package org.sangnguyen.aidocs.config;
 
 import org.springframework.aot.hint.RuntimeHints;
 import org.springframework.aot.hint.RuntimeHintsRegistrar;

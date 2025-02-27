@@ -1,16 +1,13 @@
-package org.sangnguyen.aidocs;
+package org.sangnguyen.aidocs.controllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,9 +32,10 @@ public class MainController {
         PromptTemplate promptTemplate = new PromptTemplate(sbPromptTemplate);
         Map<String, Object> promptParameters = new HashMap<>();
         log.info(question);
+        String documents = String.join("\n", findSimilarDocuments(question));
         promptParameters.put("input", question);
-        promptParameters.put("documents", String.join("\n", findSimilarDocuments(question)));
-        log.info("Promts created");
+        promptParameters.put("documents", documents);
+        log.info("Promts created with documents: {}", documents);
         return chatClient.prompt(promptTemplate.create(promptParameters))
                 .call()
                 .content();

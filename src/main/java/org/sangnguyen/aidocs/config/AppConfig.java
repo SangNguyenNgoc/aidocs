@@ -1,4 +1,4 @@
-package org.sangnguyen.aidocs;
+package org.sangnguyen.aidocs.config;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.context.annotation.Bean;
